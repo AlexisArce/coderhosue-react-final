@@ -33,12 +33,12 @@ const NavBar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/category/men's clothing">
+              <Link className="nav-link" to="/category/women's clothing">
                 Ropa de Mujer
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/category/women's clothing">
+              <Link className="nav-link" to="/category/men's clothing">
                 Ropa de Hombre
               </Link>
             </li>
