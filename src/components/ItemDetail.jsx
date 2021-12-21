@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ItemCounter from "./ItemCounter";
+import GoCart from "./GoCart";
 
 const ItemDetail = ({ item }) => {
+  const [goCart, setGoCart] = useState(false);
+
+  const onAdd = (quantity) => {
+    setGoCart(true);
+  };
+
   return (
     <React.Fragment>
       <div className="row">
@@ -22,14 +29,11 @@ const ItemDetail = ({ item }) => {
           >
             $ {item.price}
           </p>
-          <div className="text-center">
-            <ItemCounter min={1} max={5} stock={100} />
-          </div>
-          <div className="d-grid gap-2">
-            <button className="btn btn-primary" type="button">
-              Agregar al carrito
-            </button>
-          </div>
+          {goCart ? (
+            <GoCart />
+          ) : (
+            <ItemCounter min={1} max={5} stock={100} onAdd={onAdd} />
+          )}
         </div>
       </div>
       <div className="row">
