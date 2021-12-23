@@ -31,6 +31,16 @@ function CartContextProvider({ children }) {
     setCartList([]);
   }
 
+  function getTotalItems() {
+    let totalItems = 0;
+
+    cartList.forEach((item) => {
+      totalItems += item.quantity;
+    });
+
+    return totalItems;
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -38,6 +48,7 @@ function CartContextProvider({ children }) {
         addToCart,
         removeItem,
         clearCart,
+        getTotalItems,
       }}
     >
       {children}
