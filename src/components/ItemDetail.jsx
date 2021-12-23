@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import ItemCounter from "./ItemCounter";
 import GoCart from "./GoCart";
+import { useCartContext } from "../context/CartContext";
 
 const ItemDetail = ({ item }) => {
   const [goCart, setGoCart] = useState(false);
+  const { addToCart } = useCartContext();
 
   const onAdd = (quantity) => {
+    item.quantity = quantity;
+    addToCart(item);
     setGoCart(true);
   };
 

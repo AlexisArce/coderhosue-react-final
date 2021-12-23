@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
+import { useCartContext } from "../context/CartContext";
 import ItemCounter from "./ItemCounter";
 import GoCart from "./GoCart";
 
 const Item = ({ item }) => {
   const navigate = useNavigate();
   const [goCart, setGoCart] = useState(false);
+  const { addToCart } = useCartContext();
 
   const onAdd = (quantity) => {
+    item.quantity = quantity;
+    addToCart(item);
     setGoCart(true);
   };
 
