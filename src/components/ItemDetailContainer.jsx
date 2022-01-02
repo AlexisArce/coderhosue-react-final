@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
 import ItemDetail from "./ItemDetail";
 import Spinner from "./Spinner";
 
@@ -9,9 +9,16 @@ const ItemDetailContainer = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`).then((response) => {
-      setItem(response.data);
-    });
+    async function fetchData() {
+      const db = getFirestore();
+      const docRef = doc(db, "products", id);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setItem({ id: id, ...docSnap.data() });
+      }
+    }
+    fetchData();
   }, [id]);
 
   return (

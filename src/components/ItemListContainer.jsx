@@ -1,21 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
+//import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import Spinner from "./Spinner";
+import { collection, getFirestore, getDocs, query } from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-  const { category } = useParams();
+  //const { category } = useParams();
 
   useEffect(() => {
-    let url = "https://fakestoreapi.com/products";
-    url = category ? `${url}/category/${category}` : url;
-
-    axios.get(url).then((response) => {
-      setItems(response.data);
-    });
-  }, [category]);
+    const db = getFirestore();
+    const queryCollection = query(
+      collection(db, "products")
+      //where("category", "=", category)
+    );
+    getDocs(queryCollection)
+      .then((resp) => {
+        console.log(resp);
+        setItems(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })));
+      })
+      .catch((err) => console.log(err));
+  });
 
   return (
     <div className="container fluid my-4">
