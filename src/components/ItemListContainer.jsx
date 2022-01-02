@@ -22,7 +22,6 @@ const ItemListContainer = () => {
 
     getDocs(queryCollection)
       .then((resp) => {
-        console.log(resp);
         setItems(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })));
       })
       .catch((err) => console.log(err));
