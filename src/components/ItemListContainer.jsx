@@ -20,7 +20,7 @@ const ItemListContainer = () => {
         setItems(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })));
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
 
   return (
     <div className="container fluid my-4">
