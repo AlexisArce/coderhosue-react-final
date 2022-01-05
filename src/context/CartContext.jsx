@@ -22,9 +22,7 @@ function CartContextProvider({ children }) {
   }
 
   function removeItem(id) {
-    const index = cartList.findIndex((i) => i.id === id);
-    cartList.splice(index, 1);
-    setCartList([...cartList]);
+    setCartList( cartList.filter(item => item.id !== id) );
   }
 
   function clearCart() {
@@ -39,6 +37,10 @@ function CartContextProvider({ children }) {
     });
 
     return totalItems;
+  }
+
+  function getTotalAmount() {
+    return cartList.reduce((acum, prod) => acum + (prod.quantity * prod.price), 0)
   }
 
   return (
