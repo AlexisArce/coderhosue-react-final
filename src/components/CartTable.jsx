@@ -37,15 +37,16 @@ const CartTable = () => {
                 </table>
             </div>
         </div>        
-        <div className="row align-items-end mt-4">
-            <div className="col-md-1 offset-md-10"><strong>Total:</strong></div>
-            <div className="col-md-1"><strong>$ {getTotalAmount()}</strong></div>
+        <div className="row align-items-end mt-4">            
+            <div className="col-md-2 offset-md-10"><strong>Total: $ {getTotalAmount()}</strong></div>
         </div>
         <div className="row mt-5">
-         <div className=" col-md-2 offset-md-10 align-items-end">
-                <button className="btn btn-success">
-                    Generar orden <FaFileInvoiceDollar />
-                </button>
+            <div className="col-md-2 offset-md-10">
+                <div className="d-grid gap-2 d-md-block">
+                    <button className="btn btn-success">
+                        Generar orden <FaFileInvoiceDollar />
+                    </button>
+                </div>
             </div>
         </div>
         <div className="row mt-5">
