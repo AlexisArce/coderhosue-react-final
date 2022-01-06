@@ -2,7 +2,7 @@ import React from 'react';
 import { useCartContext } from "../context/CartContext";
 
 const CartTable = () => {
-    const { cartList, clearCart } = useCartContext();
+    const { cartList, clearCart, getTotalAmount } = useCartContext();
 
     return ( 
     <React.Fragment>
@@ -33,7 +33,9 @@ const CartTable = () => {
                         </tr>
                     ))}
                     </tbody>
-                    <tfoot></tfoot>
+                    <tfoot>
+                        <td colspan="3"><strong>TOTAL</strong></td><td ><strong>{getTotalAmount()} $</strong></td>`
+                    </tfoot>
                 </table>
             </div>
         </div>
