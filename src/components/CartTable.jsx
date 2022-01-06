@@ -1,16 +1,17 @@
 import React from 'react';
 import { MdRemoveCircleOutline } from 'react-icons/md';
-import { Button } from "react-bootstrap"
+import { FaFileInvoiceDollar } from 'react-icons/fa';
+import { BsCartPlus } from 'react-icons/bs';
+import { RiChatDeleteFill } from 'react-icons/ri'
+import { Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 
 const CartTable = () => {
     const { cartList, clearCart, getTotalAmount } = useCartContext();
 
     return ( 
-    <React.Fragment>
-        <div className="row justify-content-md-center">       
-            <div className="col-md-12 m-4"><h2>Carrito</h2></div>
-        </div>
+    <React.Fragment>        
         <div className="row justify-content-md-center">       
             <div className="col-md-12">
                 <table id="items-table" className="table table-hover table-light">
@@ -38,14 +39,20 @@ const CartTable = () => {
             </div>
         </div>        
         <div className="row align-items-end mt-4">
-            <div className="col-md-1 offset-md-9"><strong>Total:</strong></div>
-            <div className="col-md-2"><strong>$ {getTotalAmount()}</strong></div>
+            <div className="col-md-1 offset-md-10"><strong>Total:</strong></div>
+            <div className="col-md-1"><strong>$ {getTotalAmount()}</strong></div>
         </div>
-        <div className="row">
-            <div className=" col-md-2">
-            <button className="btn btn-danger" onClick={clearCart}>
-                Vaciar Carrito
-            </button>
+        <div className="row mt-5">
+            <div className=" col-md-5 offset-md-7">
+                <span onClick={clearCart} style={{color:"red", cursor: "pointer"}}>
+                    <RiChatDeleteFill /> Vaciar Carrito
+                </span>
+                <Link to="/" style={{textDecoration: "none"}} className="mx-4">
+                    <BsCartPlus /> Seguir comprando
+                 </Link>
+                  <button className="btn btn-success">
+                      Generar orden <FaFileInvoiceDollar />
+                  </button>
             </div>
         </div>
       </React.Fragment>

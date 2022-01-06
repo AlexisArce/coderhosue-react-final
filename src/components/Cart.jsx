@@ -6,7 +6,10 @@ const Cart = () => {
   const { cartList, clearCart } = useCartContext();
 
   return (
-    <div className="container">    
+    <div className="container">  
+      <div className="row justify-content-md-center">       
+        <div className="col-md-12 m-4"><h2>Carrito</h2></div>
+      </div>  
       { cartList?.length ? <CartTable /> : <h3>No hay items :(</h3>}            
     </div>
   );

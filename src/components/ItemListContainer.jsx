@@ -29,7 +29,7 @@ const ItemListContainer = () => {
 
   return (
     <div className="container fluid my-4">
-      {items ? <ItemList items={items} /> : <Spinner />}
+      {items.length ? <ItemList items={items} /> : <Spinner />}
     </div>
   );
 };
