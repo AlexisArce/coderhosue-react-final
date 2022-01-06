@@ -3,7 +3,7 @@ import { useCartContext } from "../context/CartContext";
 import CartTable from "./CartTable"
 
 const Cart = () => {
-  const { cartList, clearCart } = useCartContext();
+  const { cartList } = useCartContext();
 
   return (
     <div className="container">  

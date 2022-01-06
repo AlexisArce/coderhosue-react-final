@@ -3,7 +3,6 @@ import { MdRemoveCircleOutline } from 'react-icons/md';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { BsCartPlus } from 'react-icons/bs';
 import { RiChatDeleteFill } from 'react-icons/ri'
-import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 
@@ -43,16 +42,20 @@ const CartTable = () => {
             <div className="col-md-1"><strong>$ {getTotalAmount()}</strong></div>
         </div>
         <div className="row mt-5">
-            <div className=" col-md-5 offset-md-7">
+         <div className=" col-md-2 offset-md-10 align-items-end">
+                <button className="btn btn-success">
+                    Generar orden <FaFileInvoiceDollar />
+                </button>
+            </div>
+        </div>
+        <div className="row mt-5">
+            <div className="col-md-5 offset-md-7 col-lg-6 offset-lg-6 col-xl-4 offset-xl-8 align-items-end">
                 <span onClick={clearCart} style={{color:"red", cursor: "pointer"}}>
                     <RiChatDeleteFill /> Vaciar Carrito
                 </span>
-                <Link to="/" style={{textDecoration: "none"}} className="mx-4">
+                <Link to="/" style={{textDecoration: "none"}} className="ms-4">
                     <BsCartPlus /> Seguir comprando
-                 </Link>
-                  <button className="btn btn-success">
-                      Generar orden <FaFileInvoiceDollar />
-                  </button>
+                 </Link>                 
             </div>
         </div>
       </React.Fragment>

@@ -6,8 +6,8 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 navbar-dark bg-dark">
       <div className="container-fluid">
-        <Link to="/">
-          <span className="navbar-brand mb-0 h1">Final</span>
+        <Link to="/" className="navbar-brand mb-0 h1">
+          <img src="./logo.png" alt="Productos importados" width="100" height="100" />
         </Link>
         <button
           className="navbar-toggler"
