@@ -1,29 +1,14 @@
 import React from "react";
 import { useCartContext } from "../context/CartContext";
+import CartTable from "./CartTable"
 
 const Cart = () => {
   const { cartList, clearCart } = useCartContext();
 
+console.log(cartList)
   return (
-    <div className="container">
-      <div className="row justify-content-md-center">
-        <div className="col">
-          <ul className="list-group">
-            {cartList.map((prod) => (
-              <li className="list-group-item" key={prod.id}>
-                {prod.title} {prod.quantity}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className="row">
-        <div className=" col-md-2">
-          <button className="btn btn-danger" onClick={clearCart}>
-            Vaciar Carrito
-          </button>
-        </div>
-      </div>
+    <div className="container">    
+      { cartList?.length ? <CartTable /> : <h3>No hay items :(</h3>}            
     </div>
   );
 };
