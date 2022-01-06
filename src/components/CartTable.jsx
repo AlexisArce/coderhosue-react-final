@@ -9,6 +9,9 @@ const CartTable = () => {
     return ( 
     <React.Fragment>
         <div className="row justify-content-md-center">       
+            <div className="col-md-12 m-4"><h2>Carrito</h2></div>
+        </div>
+        <div className="row justify-content-md-center">       
             <div className="col-md-12">
                 <table id="items-table" className="table table-hover table-light">
                     <thead>
@@ -27,18 +30,16 @@ const CartTable = () => {
                             <td>{prod.price}</td>
                             <td>{prod.quantity}</td>
                             <td>{prod.price * prod.quantity}</td>
-                            <td>
-                            <MdRemoveCircleOutline />                            
-                            </td>
+                            <td><MdRemoveCircleOutline /></td>
                         </tr>
                     ))}
                     </tbody>                   
                 </table>
             </div>
-        </div>
-        <div className="row align-items-end">
-            <div className="col-md-2 offset-md-8">Total: </div>
-            <div className="col-md-2">$ {getTotalAmount()}</div>
+        </div>        
+        <div className="row align-items-end mt-4">
+            <div className="col-md-1 offset-md-9"><strong>Total:</strong></div>
+            <div className="col-md-2"><strong>$ {getTotalAmount()}</strong></div>
         </div>
         <div className="row">
             <div className=" col-md-2">

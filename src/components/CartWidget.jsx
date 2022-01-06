@@ -6,7 +6,7 @@ const CartWidget = () => {
 
   return (
     <Link className="nav-link ms-auto m-2" to="/cart">
-      <button type="button" className="btn btn-primary position-relative">
+      <button type="button" className="btn btn-primary btn-outline-light position-relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="19"

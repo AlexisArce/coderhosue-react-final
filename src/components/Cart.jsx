@@ -5,7 +5,6 @@ import CartTable from "./CartTable"
 const Cart = () => {
   const { cartList, clearCart } = useCartContext();
 
-console.log(cartList)
   return (
     <div className="container">    
       { cartList?.length ? <CartTable /> : <h3>No hay items :(</h3>}            
