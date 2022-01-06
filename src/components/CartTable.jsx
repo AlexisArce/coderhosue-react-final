@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdRemoveCircleOutline } from 'react-icons/md';
+import { Button } from "react-bootstrap"
 import { useCartContext } from "../context/CartContext";
 
 const CartTable = () => {
@@ -7,8 +9,11 @@ const CartTable = () => {
     return ( 
     <React.Fragment>
         <div className="row justify-content-md-center">       
+            <div className="col-md-12 m-4"><h2>Carrito</h2></div>
+        </div>
+        <div className="row justify-content-md-center">       
             <div className="col-md-12">
-                <table id="items-table" className="table table-striped">
+                <table id="items-table" className="table table-hover table-light">
                     <thead>
                     <tr>                      
                         <th scope="col">Producto</th>
@@ -25,19 +30,16 @@ const CartTable = () => {
                             <td>{prod.price}</td>
                             <td>{prod.quantity}</td>
                             <td>{prod.price * prod.quantity}</td>
-                            <td>
-                            <a href="#" data-id={prod.id} className="deleteProduct" data-toggle="tooltip" data-placement="right" title="Eliminar producto">
-                                <i className="bi bi-trash"></i>
-                            </a>
-                            </td>
+                            <td><MdRemoveCircleOutline /></td>
                         </tr>
                     ))}
-                    </tbody>
-                    <tfoot>
-                        <td colspan="3"><strong>TOTAL</strong></td><td ><strong>{getTotalAmount()} $</strong></td>`
-                    </tfoot>
+                    </tbody>                   
                 </table>
             </div>
+        </div>        
+        <div className="row align-items-end mt-4">
+            <div className="col-md-1 offset-md-9"><strong>Total:</strong></div>
+            <div className="col-md-2"><strong>$ {getTotalAmount()}</strong></div>
         </div>
         <div className="row">
             <div className=" col-md-2">
