@@ -56,7 +56,7 @@ const CartTable = () => {
                 </span>
                 <Link to="/" style={{textDecoration: "none"}} className="ms-4">
                     <BsCartPlus /> Seguir comprando
-                 </Link>                 
+                </Link>                 
             </div>
         </div>
       </React.Fragment>

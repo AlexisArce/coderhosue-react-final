@@ -12,6 +12,7 @@ import {
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { category } = useParams();
 
   useEffect(() => {
@@ -24,12 +25,13 @@ const ItemListContainer = () => {
       .then((resp) => {
         setItems(resp.docs.map((prod) => ({ id: prod.id, ...prod.data() })));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false))
   }, [category]);
 
   return (
     <div className="container fluid my-4">
-      {items.length ? <ItemList items={items} /> : <Spinner />}
+      { isLoading ? <Spinner /> : <ItemList items={items} /> }
     </div>
   );
 };
