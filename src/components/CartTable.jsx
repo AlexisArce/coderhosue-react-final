@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 
 const CartTable = () => {
-    const { cartList, clearCart, getTotalAmount } = useCartContext();
+    const { cartList, clearCart, getTotalAmount, removeItem } = useCartContext();
 
     return ( 
     <React.Fragment>        
@@ -30,7 +30,7 @@ const CartTable = () => {
                             <td>{prod.price}</td>
                             <td>{prod.quantity}</td>
                             <td>{prod.price * prod.quantity}</td>
-                            <td><MdRemoveCircleOutline /></td>
+                            <td><MdRemoveCircleOutline style={{cursor: "pointer"}} onClick={()=>{removeItem(prod.id)}} /></td>
                         </tr>
                     ))}
                     </tbody>                   
