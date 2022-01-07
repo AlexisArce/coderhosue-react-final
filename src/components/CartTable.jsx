@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from "react";
 import { MdRemoveCircleOutline } from 'react-icons/md';
 import { FaFileInvoiceDollar } from 'react-icons/fa';
 import { BsCartPlus } from 'react-icons/bs';
 import { RiChatDeleteFill } from 'react-icons/ri'
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
+import ModalGenerateOrder from "./ModalGenerateOrder";
 
 const CartTable = () => {
     const { cartList, clearCart, getTotalAmount, removeItem } = useCartContext();
+    const [modalShow, setModalShow] = useState(false);
 
     return ( 
     <React.Fragment>        
@@ -43,7 +45,7 @@ const CartTable = () => {
         <div className="row mt-5">
             <div className="col-md-2 offset-md-10">
                 <div className="d-grid gap-2 d-md-block">
-                    <button className="btn btn-success">
+                    <button className="btn btn-success" onClick={() => setModalShow(true)}>
                         Generar orden <FaFileInvoiceDollar />
                     </button>
                 </div>
@@ -59,6 +61,7 @@ const CartTable = () => {
                 </Link>                 
             </div>
         </div>
+        <ModalGenerateOrder show={modalShow} onHide={() => setModalShow(false)} />
       </React.Fragment>
     );
 }

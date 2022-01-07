@@ -15,7 +15,7 @@ const ItemDetail = ({ item }) => {
 
   return (
     <React.Fragment>
-      <div className="row">
+      <div className="row my-5">
         <div className="offset-md-1 col-md-6">
           <img
             src={item.image}
