@@ -10,6 +10,10 @@ const CartTable = () => {
   const { cartList, clearCart, getTotalAmount, removeItem } = useCartContext();
   const [modalShow, setModalShow] = useState(false);
 
+  const roundTwoDecimals = (value) => {
+    return Math.round((value + Number.EPSILON) * 100) / 100;
+  };
+
   return (
     <React.Fragment>
       <div className="row justify-content-md-center">
@@ -36,7 +40,9 @@ const CartTable = () => {
                   <th scope="row">{prod.title}</th>
                   <td className="text-end">{prod.price}</td>
                   <td className="text-center">{prod.quantity}</td>
-                  <td className="text-end">{prod.price * prod.quantity}</td>
+                  <td className="text-end">
+                    {roundTwoDecimals(prod.price * prod.quantity)}
+                  </td>
                   <td>
                     <MdRemoveCircleOutline
                       style={{ cursor: "pointer" }}

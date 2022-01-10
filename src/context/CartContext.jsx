@@ -22,7 +22,7 @@ function CartContextProvider({ children }) {
   }
 
   function removeItem(id) {
-    setCartList( cartList.filter(item => item.id !== id) );
+    setCartList(cartList.filter((item) => item.id !== id));
   }
 
   function clearCart() {
@@ -40,7 +40,13 @@ function CartContextProvider({ children }) {
   }
 
   function getTotalAmount() {
-    return cartList.reduce((acum, prod) => acum + (prod.quantity * prod.price), 0)
+    return roundTwoDecimals(
+      cartList.reduce((acum, prod) => acum + prod.quantity * prod.price, 0)
+    );
+  }
+
+  function roundTwoDecimals(value) {
+    return Math.round((value + Number.EPSILON) * 100) / 100;
   }
 
   return (
