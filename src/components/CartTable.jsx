@@ -51,8 +51,8 @@ const CartTable = () => {
         </div>
       </div>
       <div className="row mt-5">
-        <div className="col-md-2 offset-md-10">
-          <div className="d-grid gap-2 d-md-block">
+        <div className="col-md-4 offset-md-8">
+          <div className="d-grid gap-2">
             <button
               className="btn btn-success"
               onClick={() => setModalShow(true)}
