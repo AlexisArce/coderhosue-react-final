@@ -1,19 +1,48 @@
 import React from "react";
 import { useFormik } from "formik";
+import * as yup from "yup";
 
 const FormGenerateOrder = () => {
+  const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
+  const validationSchema = yup.object({
+    firstName: yup.string().required("Campo requerido"),
+    lastName: yup.string().required("Campo requerido"),
+    email: yup.string().email("Email inválido").required("Campo requerido"),
+    confirmEmail: yup
+      .string()
+      .email("Email inválido")
+      .required("Campo requerido"),
+    phone: yup
+      .string()
+      .required("Campo requerido")
+      .matches(phoneRegExp, "Número de teléfono inválido"),
+  });
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "",
       email: "",
-      confirmEmail: "oli",
-      telephone: "",
+      confirmEmail: "",
+      phone: "",
     },
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
     },
+    validationSchema,
   });
+
+  const isValid = () => {
+    return (
+      !(formik.errors.firstName && formik.touched.firstName) &&
+      !(formik.errors.lastName && formik.touched.lastName) &&
+      !(formik.errors.email && formik.touched.email) &&
+      !(formik.errors.confirmEmail && formik.touched.confirmEmail) &&
+      !(formik.errors.phone && formik.touched.phone)
+    );
+  };
 
   return (
     <div className="container">
@@ -26,11 +55,18 @@ const FormGenerateOrder = () => {
             <input
               id="firstName"
               name="firstName"
-              className="form-control"
+              className={
+                formik.errors.firstName && formik.touched.firstName
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               type="text"
               onChange={formik.handleChange}
               value={formik.values.firstName}
             />
+            {formik.errors.firstName && formik.touched.firstName && (
+              <div className="invalid-feedback">{formik.errors.firstName}</div>
+            )}
           </div>
           <div className="form-group col">
             <label htmlFor="lastName" className="form-label mt-2">
@@ -39,11 +75,18 @@ const FormGenerateOrder = () => {
             <input
               id="lastName"
               name="lastName"
-              className="form-control"
+              className={
+                formik.errors.lastName && formik.touched.lastName
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               type="text"
               onChange={formik.handleChange}
               value={formik.values.lastName}
             />
+            {formik.errors.lastName && formik.touched.lastName && (
+              <div className="invalid-feedback">{formik.errors.lastName}</div>
+            )}
           </div>
         </div>
 
@@ -56,10 +99,17 @@ const FormGenerateOrder = () => {
               id="email"
               name="email"
               type="email"
-              className="form-control"
+              className={
+                formik.errors.email && formik.touched.email
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               onChange={formik.handleChange}
               value={formik.values.email}
             />
+            {formik.errors.email && formik.touched.email && (
+              <div className="invalid-feedback">{formik.errors.email}</div>
+            )}
           </div>
 
           <div className="form-group col">
@@ -70,30 +120,50 @@ const FormGenerateOrder = () => {
               id="confirmEmail"
               name="confirmEmail"
               type="email"
-              className="form-control"
+              className={
+                formik.errors.confirmEmail && formik.touched.confirmEmail
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               onChange={formik.handleChange}
               value={formik.values.confirmEmail}
             />
+            {formik.errors.confirmEmail && formik.touched.confirmEmail && (
+              <div className="invalid-feedback">
+                {formik.errors.confirmEmail}
+              </div>
+            )}
           </div>
         </div>
 
         <div className="row">
           <div className="form-group">
-            <label htmlFor="telephone" className="form-label mt-4">
+            <label htmlFor="phone" className="form-label mt-4">
               Teléfono
             </label>
             <input
-              id="telephone"
-              name="telephone"
+              id="phone"
+              name="phone"
               type="text"
-              className="form-control"
+              className={
+                formik.errors.phone && formik.touched.phone
+                  ? "form-control is-invalid"
+                  : "form-control"
+              }
               onChange={formik.handleChange}
-              value={formik.values.telephone}
+              value={formik.values.phone}
             />
+            {formik.errors.phone && formik.touched.phone && (
+              <div className="invalid-feedback">{formik.errors.phone}</div>
+            )}
           </div>
         </div>
         <div className="d-grid gap-2 mt-5">
-          <button className="btn btn-primary" type="submit">
+          <button
+            className="btn btn-primary"
+            type="submit"
+            disabled={!isValid()}
+          >
             Enviar
           </button>
         </div>
