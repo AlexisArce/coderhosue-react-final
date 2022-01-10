@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./bootstrap.lux-theme.min.css";
 import CartContextProvider from "./context/CartContext";
 import ItemListContainer from "./components/ItemListContainer";
 import NavBar from "./components/NavBar";

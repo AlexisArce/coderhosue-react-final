@@ -4,10 +4,15 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light py-2 navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container-fluid">
         <Link to="/" className="navbar-brand mb-0 h1">
-          <img src="./logo.png" alt="Productos importados" width="100" height="100" />
+          <img
+            src="./logo.png"
+            alt="Productos importados"
+            width="145"
+            height="144"
+          />
         </Link>
         <button
           className="navbar-toggler"
