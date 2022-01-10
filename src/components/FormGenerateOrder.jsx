@@ -123,7 +123,7 @@ const FormGenerateOrder = () => {
 
           <div className="form-group col">
             <label htmlFor="confirmEmail" className="form-label mt-4">
-              Confirmar email
+              Confirmar Email
             </label>
             <input
               id="confirmEmail"
