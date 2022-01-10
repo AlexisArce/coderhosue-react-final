@@ -18,9 +18,15 @@ const CartTable = () => {
             <thead>
               <tr>
                 <th scope="col">Producto</th>
-                <th scope="col">Precio</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Subtotal</th>
+                <th scope="col" className="text-end">
+                  Precio
+                </th>
+                <th scope="col" className="text-center">
+                  Cantidad
+                </th>
+                <th scope="col" className="text-end">
+                  Subtotal
+                </th>
                 <th scope="col"></th>
               </tr>
             </thead>
@@ -28,9 +34,9 @@ const CartTable = () => {
               {cartList.map((prod) => (
                 <tr key={prod.id}>
                   <th scope="row">{prod.title}</th>
-                  <td>{prod.price}</td>
-                  <td>{prod.quantity}</td>
-                  <td>{prod.price * prod.quantity}</td>
+                  <td className="text-end">{prod.price}</td>
+                  <td className="text-center">{prod.quantity}</td>
+                  <td className="text-end">{prod.price * prod.quantity}</td>
                   <td>
                     <MdRemoveCircleOutline
                       style={{ cursor: "pointer" }}
@@ -64,12 +70,20 @@ const CartTable = () => {
       </div>
       <div className="row my-5">
         <div className="col-md-4 offset-md-8">
-          <span onClick={clearCart} style={{ color: "red", cursor: "pointer" }}>
-            <RiChatDeleteFill /> Vaciar carrito
-          </span>
-          <Link to="/" style={{ textDecoration: "none" }} className="ms-4">
+          <Link
+            to="/"
+            style={{ textDecoration: "none" }}
+            className="btn btn-secondary"
+          >
             <BsCartPlus /> Seguir comprando
           </Link>
+          <span
+            onClick={clearCart}
+            className="btn btn-secondary"
+            style={{ color: "red", cursor: "pointer" }}
+          >
+            <RiChatDeleteFill /> Vaciar carrito
+          </span>
         </div>
       </div>
       <ModalGenerateOrder show={modalShow} onHide={() => setModalShow(false)} />
