@@ -13,7 +13,16 @@ const FormGenerateOrder = () => {
     confirmEmail: yup
       .string()
       .email("Email inválido")
-      .required("Campo requerido"),
+      .required("Campo requerido")
+      .test({
+        name: "sameAs",
+        exclusive: false,
+        params: {},
+        message: "Debe coincidir con el email ingresado anteriormente",
+        test: function (value) {
+          return value === this.parent.email;
+        },
+      }),
     phone: yup
       .string()
       .required("Campo requerido")
