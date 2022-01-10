@@ -1,8 +1,50 @@
 import React from "react";
+import {
+  addDoc,
+  collection,
+  getFirestore,
+  Timestamp,
+} from "firebase/firestore";
+import { useState } from "react";
+import { useCartContext } from "../context/CartContext";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { roundTwoDecimals } from "../helpers/functions";
 
 const FormGenerateOrder = () => {
+  const [idOrder, setIdOrder] = useState("");
+  const { cartList, getTotalAmount, clearCart } = useCartContext();
+
+  const generateOrder = (values) => {
+    let order = {};
+    order.date = Timestamp.fromDate(new Date());
+
+    order.buyer = { ...values };
+    delete order.buyer.confirmEmail;
+
+    order.total = getTotalAmount();
+
+    order.items = cartList.map((cartItem) => {
+      const id = cartItem.id;
+      const title = cartItem.title;
+      const price = roundTwoDecimals(cartItem.price * cartItem.quantity);
+
+      return { id, title, price };
+    });
+
+    const db = getFirestore();
+    const orderCollection = collection(db, "orders");
+
+    addDoc(orderCollection, order)
+      .then((resp) => {
+        setIdOrder(resp.id);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        clearCart();
+      });
+  };
+
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -38,7 +80,7 @@ const FormGenerateOrder = () => {
       phone: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      generateOrder(values);
     },
     validationSchema,
   });
@@ -168,13 +210,17 @@ const FormGenerateOrder = () => {
           </div>
         </div>
         <div className="d-grid gap-2 mt-5">
-          <button
-            className="btn btn-primary"
-            type="submit"
-            disabled={!isValid()}
-          >
-            Enviar
-          </button>
+          {idOrder ? (
+            `Orden generada correctamente: # ${idOrder}`
+          ) : (
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={!isValid()}
+            >
+              Enviar
+            </button>
+          )}
         </div>
       </form>
     </div>

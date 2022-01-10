@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { roundTwoDecimals } from "../helpers/functions";
 
 const CartContext = createContext([]);
 
@@ -43,10 +44,6 @@ function CartContextProvider({ children }) {
     return roundTwoDecimals(
       cartList.reduce((acum, prod) => acum + prod.quantity * prod.price, 0)
     );
-  }
-
-  function roundTwoDecimals(value) {
-    return Math.round((value + Number.EPSILON) * 100) / 100;
   }
 
   return (

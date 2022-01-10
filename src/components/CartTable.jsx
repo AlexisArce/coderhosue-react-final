@@ -5,14 +5,11 @@ import { RiChatDeleteFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../context/CartContext";
 import ModalGenerateOrder from "./ModalGenerateOrder";
+import { roundTwoDecimals } from "../helpers/functions";
 
 const CartTable = () => {
   const { cartList, clearCart, getTotalAmount, removeItem } = useCartContext();
   const [modalShow, setModalShow] = useState(false);
-
-  const roundTwoDecimals = (value) => {
-    return Math.round((value + Number.EPSILON) * 100) / 100;
-  };
 
   return (
     <React.Fragment>
