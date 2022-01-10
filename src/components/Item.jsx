@@ -25,8 +25,8 @@ const Item = ({ item }) => {
         src={item.image}
         className="card-img-top p-2"
         alt={item.title}
-        width="300"
-        height="300"
+        width="384"
+        height="384"
         onClick={viewItemDetails}
       />
       <div className="card-body">

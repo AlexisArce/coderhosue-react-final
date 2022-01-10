@@ -19,8 +19,8 @@ const ItemDetail = ({ item }) => {
         <div className="offset-md-1 col-md-6">
           <img
             src={item.image}
-            height="400"
-            width="400"
+            height="384"
+            width="384"
             className="grey lighten-2 p-2 "
             alt={item.title}
           />
