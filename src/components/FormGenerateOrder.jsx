@@ -57,7 +57,7 @@ const FormGenerateOrder = () => {
     <div className="container">
       <form onSubmit={formik.handleSubmit}>
         <div className="row">
-          <div className="form-group col">
+          <div className="form-group col-md-6">
             <label htmlFor="firstName" className="form-label mt-2">
               Nombre
             </label>
@@ -77,7 +77,7 @@ const FormGenerateOrder = () => {
               <div className="invalid-feedback">{formik.errors.firstName}</div>
             )}
           </div>
-          <div className="form-group col">
+          <div className="form-group col-md-6">
             <label htmlFor="lastName" className="form-label mt-2">
               Apellido
             </label>
@@ -100,7 +100,7 @@ const FormGenerateOrder = () => {
         </div>
 
         <div className="row">
-          <div className="form-group col">
+          <div className="form-group col-md-6">
             <label htmlFor="email" className="form-label mt-4">
               Email
             </label>
@@ -121,7 +121,7 @@ const FormGenerateOrder = () => {
             )}
           </div>
 
-          <div className="form-group col">
+          <div className="form-group col-md-6">
             <label htmlFor="confirmEmail" className="form-label mt-4">
               Confirmar Email
             </label>
