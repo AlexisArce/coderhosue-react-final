@@ -9,7 +9,10 @@ import { useState } from "react";
 import { useCartContext } from "../context/CartContext";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import { roundTwoDecimals } from "../helpers/functions";
+const MySwal = withReactContent(Swal);
 
 const FormGenerateOrder = () => {
   const [idOrder, setIdOrder] = useState("");
@@ -38,11 +41,18 @@ const FormGenerateOrder = () => {
     addDoc(orderCollection, order)
       .then((resp) => {
         setIdOrder(resp.id);
+        MySwal.fire({
+          title: "La orden fue generada correctamente!",
+          html: `Orden # ${resp.id}`,
+          icon: "success",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            clearCart();
+          }
+        });
       })
       .catch((err) => console.log(err))
-      .finally(() => {
-        clearCart();
-      });
+      .finally(() => {});
   };
 
   const phoneRegExp =
