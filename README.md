@@ -1,4 +1,26 @@
-Se utiliza [Fake Store API](https://fakestoreapi.com/).
+# Proyecto final React Coderhouse
+
+Tienda online de una empresa ficticia de ventas de productos importados
+
+## Screenshots
+
+![App Screenshot](https://coderhouse-react-final.pages.dev/coderhouse-react-app.gif)
+
+## Librerías externas
+
+- axios: Para realizar llamadas asincrónicas. https://github.com/axios/axios
+- bootstrap: Para estilos y grid system. https://github.com/twbs/bootstrap
+- react-bootstrap: Facilita el uso de algunos componentes de bootstrap con react https://react-bootstrap.github.io/
+- lux bootstrap theme: Tema gratuito para bootstrap https://bootswatch.com/lux/.
+- firebase: Base de datos no relacional para poder persistir y consumir productos y ordenes de compra. https://firebase.google.com/
+- formik: Para el formulario de orden de compra https://formik.org/
+- yup: Para validaciones en el formulario de orden de compra https://github.com/jquense/yup
+- react-icons: Para poder disponer de una gran variedad de iconos https://react-icons.github.io/react-icons/
+- sweetalert2: Para poder mostrar cuadros de dialogos agradables https://sweetalert2.github.io/recipe-gallery/sweetalert2-react.html
+
+Se utilizan datos de prueba copiados de [Fake Store API](https://fakestoreapi.com/).
+
+Se utilizó create-react-app para crear el proyecto:
 
 # Getting Started with Create React App
 
