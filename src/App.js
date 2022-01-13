@@ -19,7 +19,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />}></Route>
           <Route
             exact
-            path="/category/:category"
+            path="/categories/:category"
             element={<ItemListContainer />}
           ></Route>
           <Route

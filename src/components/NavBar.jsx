@@ -28,22 +28,22 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link" to="/category/electronics">
+              <Link className="nav-link" to="/categories/electronica">
                 Electrónica
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/category/jewelery">
+              <Link className="nav-link" to="/categories/joyeria">
                 Joyería
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/category/women's clothing">
+              <Link className="nav-link" to="/categories/ropa-mujer">
                 Ropa de Mujer
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/category/men's clothing">
+              <Link className="nav-link" to="/categories/ropa-hombre">
                 Ropa de Hombre
               </Link>
             </li>
